@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom";
-import TimerCreationForm from "./components/TimerCreationForm";
-import TimerList from "./components/TimerList";
-import TimerHistory from "./components/TimerHistory";
-import TimerModal from "./components/TimerModal";
+import Home from "@/pages/Home";
+import '@/App.css';
+import TimerHistory from "@/pages/TimerHistory";
+import TimerCompletionModal from "@/components/TimerCompletionModal";
 
 function App() {
   const [timers, setTimers] = useState([]);
@@ -47,39 +47,51 @@ function App() {
   const clearModal = () => setModalInfo(null);
 
   return (
-    <div className="container">
-      <nav className="top-nav">
-        <div className="nav-logo">
-          <div className="brand-icon" />
-          <span className="brand-text">HealthFlex</span>
-        </div>
-        <div className="nav-links">
-          <Link to="/">Home</Link>
-          <Link to="/history">History</Link>
-        </div>
-        <button className="contact-button">Contact</button>
-      </nav>
-
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <TimerCreationForm addTimer={addTimer} />
-              <TimerList
+    <div className="app-container">
+      <Nav />
+      
+      <main>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Home
+                addTimer={addTimer}
                 timers={timers}
                 updateTimer={updateTimer}
                 completeTimer={completeTimer}
                 setTimers={setTimers}
               />
-            </>
-          }
+            }
+          />
+          <Route path="/history" element={<TimerHistory history={history} />} />
+        </Routes>
+      </main>
+
+      {modalInfo && (
+        <TimerCompletionModal
+          timerData={modalInfo}
+          handleClose={clearModal}
         />
-        <Route path="/history" element={<TimerHistory history={history} />} />
-      </Routes>
-      {modalInfo && <TimerModal info={modalInfo} onClose={clearModal} />}
+      )}
     </div>
   );
 }
+
+const Nav = () => (
+  <nav className="navbar">
+    <div className="navbar-logo">
+      <span className="brand-name">HealthFlex</span>
+    </div>
+    <div className="navbar-links">
+      <Link to="/" className="nav-link">
+        Home
+      </Link>
+      <Link to="/history" className="nav-link">
+        History
+      </Link>
+    </div>
+  </nav>
+);
 
 export default App;

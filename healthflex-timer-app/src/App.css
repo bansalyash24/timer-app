@@ -1,0 +1,84 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app-container {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f8f9fa;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #007bff;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 8px;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+
+.brand-icon {
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.brand-name {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+main {
+  margin-top: 20px;
+}
+
+.timer-history {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.timer-history h2 {
+  margin-bottom: 15px;
+}
+
+.timer-history ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.timer-history li {
+  background-color: #f1f1f1;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.timer-history li:last-child {
+  margin-bottom: 0;
+}
